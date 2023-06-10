@@ -1,0 +1,13 @@
+1. CompactDisc, Cart, Store, Aims
+2. If object is not instance of Media, the downcasting will be runtime error. 
+3. Media
+4. @Override
+    public int compare(Media media1, Media media2) {
+        int result = Float.compare(media1.getCost(), media2.getCost());
+        if (result == 0) {
+            return media1.getTitle().compareTo(media2.getTitle());
+        }
+        return result;
+    }
+5. Collections.sort(media, Comparator.comparing(Media::getCost).thenComparing(Media::getTitle));
+6. Collections.sort(dvd, Comparator.comparing(DigitalVideoDisc::getTitle).thenComparing(DigitalVideoDisc::getLength)).thenComparing(DigitalVideoDisc::getCost));
