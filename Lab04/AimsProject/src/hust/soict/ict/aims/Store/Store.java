@@ -14,6 +14,10 @@ public class Store {
     public int qtyInStore = 0;
     public static Scanner scanner = new Scanner(System.in);
 
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+
     public void addMedia(Media media) {
         if (itemsInStore.size() < MAX_ITEMS_IN_STORE) {
             if (itemsInStore.contains(media)) {
