@@ -4,12 +4,18 @@ import java.util.ArrayList;
 
 import hust.soict.ict.aims.media.DigitalVideoDisc;
 import hust.soict.ict.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     public int qtyOrdered = 0;
     private final ArrayList<Media> itemsOrdered = new ArrayList<>();
     private float totalCost = 0;
+    private ObservableList<Media> itemsOrderedObs = FXCollections.observableArrayList();
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrderedObs;
+    }
 
     public float totalCost() {
         if (qtyOrdered == 0) {
@@ -24,17 +30,20 @@ public class Cart {
         }
     }
 
-    public void addMedia(Media media) {
+    public String addMedia(Media media) {
         if (qtyOrdered < MAX_NUMBERS_ORDERED) {
             if (itemsOrdered.contains(media)) {
                 System.out.println("The media exists already");
+                return "The media exists already";
             } else {
                 itemsOrdered.add(media);
                 qtyOrdered++;
                 System.out.println("The media has been added");
+                return "The media has been added";
             }
         } else {
             System.out.println("Cart is full");
+            return "Cart is full";
         }
 
     }
